@@ -1,0 +1,28 @@
+body {
+  background-color: ghostwhite;
+}
+
+#titlecont {
+ text-align: center; 
+}
+#lanya {
+  text-align: center
+}
+
+#title {
+  text-align: center;
+  border: solid 5px red;
+  border-radius: 50px;
+}
+
+.disc {
+  text-align: center;
+}
+
+.right {
+  float: right;
+}
+
+.righttitle {
+  text-align: right;
+}
