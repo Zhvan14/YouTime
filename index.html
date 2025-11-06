@@ -7,7 +7,7 @@
   <title>YouTime</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div id = titlecont> <img src="icon.ico" id = title height=150 width=150>
@@ -67,6 +67,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const tabs = document.querySelectorAll('.tab-link');
   const content = document.querySelectorAll('.tab-content');
+  const videosContent = document.getElementById('videos-content');
 
   tabs.forEach(tab => {
     tab.addEventListener('click', (event) => {
@@ -76,15 +77,17 @@ document.addEventListener('DOMContentLoaded', () => {
       tab.classList.add('active');
 
       const targetId = tab.getAttribute('data-content');
-      const targetContent = document.getElementById(targetId);
 
       content.forEach(c => c.style.display = 'none');
-      document.getElementById('videos-content').style.display = 'none';
+      videosContent.style.display = 'none';
 
-      if (targetContent) {
-        targetContent.style.display = 'block';
-      } else if (targetId === 'videos-content') {
-        document.getElementById('videos-content').style.display = 'block';
+      if (targetId === 'videos-content') {
+        videosContent.style.display = 'block';
+      } else {
+        const targetContent = document.getElementById(targetId);
+        if (targetContent) {
+          targetContent.style.display = 'block';
+        }
       }
     });
   });
@@ -92,3 +95,4 @@ document.addEventListener('DOMContentLoaded', () => {
   </script>
 </body>
 </html>
+ 
