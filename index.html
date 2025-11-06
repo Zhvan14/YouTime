@@ -17,8 +17,8 @@
   <h3 class = disc>So Stupid, Yet so... Uhhhh... Stupid.</h3>
   
   <div id="tabs">
-    <a href="#videos" class="tab-link active">Videos</a>
-    <a href="#posts" class="tab-link">Posts</a>
+    <a id="videos-tab" href="#" class="tab-link active" data-content="videos-content">Videos</a>
+    <a id="posts-tab" href="#" class="tab-link" data-content="posts-content">Posts</a>
   </div>
 
   <div id="videos-content">
@@ -57,10 +57,38 @@
     </video>
   </div>
 
-  <div id="posts-content">
+  <div id="posts-content" class="tab-content">
     <h2>Recent Posts</h2>
     <p>Post 1 Placeholder: (You can add your image/content here)</p>
     <p>Post 2 Placeholder: (You can add your image/content here)</p>
   </div>
+
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.tab-link');
+  const content = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', (event) => {
+      event.preventDefault();
+      
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      const targetId = tab.getAttribute('data-content');
+      const targetContent = document.getElementById(targetId);
+
+      content.forEach(c => c.style.display = 'none');
+      document.getElementById('videos-content').style.display = 'none';
+
+      if (targetContent) {
+        targetContent.style.display = 'block';
+      } else if (targetId === 'videos-content') {
+        document.getElementById('videos-content').style.display = 'block';
+      }
+    });
+  });
+});
+  </script>
 </body>
 </html>
