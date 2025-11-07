@@ -84,3 +84,7 @@ h3 {
   display: none;
   text-align: center;
 }
+
+#postimg {
+  height: 100px;
+} 
