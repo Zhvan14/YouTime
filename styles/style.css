@@ -88,3 +88,8 @@ h3 {
 #postimg {
   height: 300px;
 } 
+
+#scrolls-content {
+  width: 50px;
+  text-align: center;
+} 
