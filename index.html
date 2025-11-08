@@ -19,9 +19,10 @@
   <div id="tabs">
     <a id="videos-tab" href="#" class="tab-link active" data-content="videos-content">Videos</a>
     <a id="posts-tab" href="#" class="tab-link" data-content="posts-content">Posts</a>
+    <a id="scrolls-tab" href="#" class="tab-link" data-content="scrolls-content">Scrolls</a>
   </div>
 
-  <div id="videos-content">
+  <div id="videos-content" class="tab-content default-active">
     <h3>Cool Trick I Found</h3>
     <p>Meero Dash ☑️</p>
     <video controls width="440" height="300">
@@ -63,13 +64,24 @@
     <h3>Zhvaan</h3>
     <p>Nuke ✅</p>
   </div>
+  
+  <div id="scrolls-content" class="tab-content">
+    <h1>placeholder</h1>
+  </div>
 
   <script>
 document.addEventListener('DOMContentLoaded', () => {
   const tabs = document.querySelectorAll('.tab-link');
-  const content = document.querySelectorAll('.tab-content');
+  const allContent = document.querySelectorAll('.tab-content');
   const videosContent = document.getElementById('videos-content');
 
+  
+  allContent.forEach(c => c.style.display = 'none');
+  
+
+  videosContent.style.display = 'block';
+  
+  
   tabs.forEach(tab => {
     tab.addEventListener('click', (event) => {
       event.preventDefault();
@@ -79,16 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const targetId = tab.getAttribute('data-content');
 
-      content.forEach(c => c.style.display = 'none');
-      videosContent.style.display = 'none';
+      
+      allContent.forEach(c => c.style.display = 'none');
 
-      if (targetId === 'videos-content') {
-        videosContent.style.display = 'block';
-      } else {
-        const targetContent = document.getElementById(targetId);
-        if (targetContent) {
-          targetContent.style.display = 'block';
-        }
+      const targetContent = document.getElementById(targetId);
+      if (targetContent) {
+        targetContent.style.display = 'block';
       }
     });
   });
@@ -96,4 +104,3 @@ document.addEventListener('DOMContentLoaded', () => {
   </script>
 </body>
 </html>
- 
